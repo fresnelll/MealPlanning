@@ -1,7 +1,3 @@
-Here's a full **README** file for your **MealPlanner** project that you can use for your GitHub repository:
-
----
-
 # MealPlanner
 
 MealPlanner is a web application that allows users to search for, save, and organize meal recipes. Using the Edamam Meal Planner API, users can easily discover nutritious meals and save them for later. It is a simple, user-friendly app designed to make meal planning easier and more enjoyable.
