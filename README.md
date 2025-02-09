@@ -61,10 +61,10 @@ pip install -r requirements.txt
 
 In the project folder, create a `.env` file and add your Edamam API credentials. You can get your API keys by signing up at [Edamam](https://developer.edamam.com/).
 
-```plaintext
+
 EDAMAM_API_KEY=your_api_key_here
 EDAMAM_APP_ID=your_app_id_here
-```
+
 
 ### 5. Run Migrations
 
