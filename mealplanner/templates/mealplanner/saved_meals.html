@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Meals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'mealplanner/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>MealPlanner</h1>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/search/">Search</a>
+            <a href="/saved-meals/">Saved Meals</a>
+            <a href="/logout/">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="saved-meals-section">
+            <h2>Your Saved Meals</h2>
+
+            {% if saved_meals %}
+                <div class="meal-list">
+                    {% for meal in saved_meals %}
+                        <div class="meal-card">
+                            <img src="{{ meal.image_url }}" alt="{{ meal.name }}">
+                            <div class="meal-info">
+                                <h3>{{ meal.name }}</h3>
+                                <p><a href="{{ meal.recipe_url }}" target="_blank">View Full Recipe</a></p>
+                                <form action="{% url 'delete_meal' meal.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="remove-btn">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>You have no saved meals. Start saving some meals!</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MealPlanner. All rights reserved.</p>
+    </footer>
+</body>
+</html>

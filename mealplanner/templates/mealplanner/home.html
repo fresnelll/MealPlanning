@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'mealplanner/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>MealPlanner</h1>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/saved-meals/">Saved Meals</a>
+            {% if user.is_authenticated %}
+                <a href="/logout/">Logout</a>
+            {% else %}
+                <a href="/login/">Login</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        
+        <!-- Intro Section -->
+        <section class="intro">
+            <h2>Welcome to MealPlanner!</h2>
+            <p>Your one-stop destination for meal planning and delicious recipes.</p>
+        </section>
+
+        <!-- Search Form Section -->
+        <section class="search-form">
+            <h3>Search for Meals</h3>
+            <form action="{% url 'search_meals' %}" method="GET">
+                <input type="text" name="query" placeholder="Enter a food or meal name" required>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MealPlanner. All rights reserved.</p>
+    </footer>
+</body>
+</html>

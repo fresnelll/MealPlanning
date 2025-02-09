@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Search Results</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'mealplanner/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>MealPlanner</h1>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/search/">Search</a>
+            <a href="/saved-meals/">Saved Meals</a>
+            <a href="/logout/">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Search Results</h2>
+
+        <div class="results-container">
+            {% if meals %}
+                {% for meal in meals %}
+                    <div class="meal-card">
+                        <img src="{{ meal.recipe.image }}" alt="{{ meal.recipe.label }}" class="meal-image">
+                        <div class="meal-details">
+                            <h3>{{ meal.recipe.label }}</h3>
+                            <p>Calories: {{ meal.recipe.calories|floatformat:0 }} kcal</p>
+                            <p>Diet Labels: {{ meal.recipe.dietLabels|join:", " }}</p>
+                            <a href="{{ meal.recipe.url }}" target="_blank" class="view-recipe">View Full Recipe</a>
+
+                            {% if user.is_authenticated %}
+                                <form action="{% url 'save_meal' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="name" value="{{ meal.recipe.label }}">
+                                    <input type="hidden" name="image_url" value="{{ meal.recipe.image }}">
+                                    <input type="hidden" name="recipe_url" value="{{ meal.recipe.url }}">
+                                    <button type="submit" class="save-button">Save Meal</button>
+                                </form>
+                            {% else %}
+                                <p><a href="{% url 'login' %}">Log in</a> to save meals.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No results found. Try searching for another meal.</p>
+            {% endif %}
+        </div>
+
+        <p><a href="{% url 'home' %}" class="back-to-home-button">Back to Home</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MealPlanner. All rights reserved.</p>
+    </footer>
+</body>
+</html>
