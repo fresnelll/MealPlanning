@@ -28,34 +28,34 @@ Before you begin, ensure you have the following installed:
 
 ### 1. Clone the Repository
 
-```bash
+
 git clone https://github.com/your-username/mealplanner.git
 cd mealplanner
-```
+
 
 ### 2. Create a Virtual Environment (Recommended)
 
-```bash
+
 python3 -m venv venv
-```
+
 
 Activate the virtual environment:
 
 - **On Windows**:
-  ```bash
+  
   venv\Scripts\activate
-  ```
+  
 
 - **On MacOS/Linux**:
-  ```bash
+  
   source venv/bin/activate
-  ```
+  
 
 ### 3. Install Dependencies
 
-```bash
+
 pip install -r requirements.txt
-```
+
 
 ### 4. Set up Environment Variables
 
@@ -70,25 +70,25 @@ EDAMAM_APP_ID=your_app_id_here
 
 Make sure to apply any database migrations:
 
-```bash
+
 python manage.py migrate
-```
+
 
 ### 6. Create a Superuser (Optional)
 
 If you want to access the Django admin panel, create a superuser:
 
-```bash
+
 python manage.py createsuperuser
-```
+
 
 ### 7. Start the Development Server
 
 Run the following command to start the server:
 
-```bash
+
 python manage.py runserver
-```
+
 
 Visit `http://127.0.0.1:8000` in your browser to view the application.
 
