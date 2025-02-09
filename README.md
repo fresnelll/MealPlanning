@@ -104,41 +104,10 @@ Visit `http://127.0.0.1:8000` in your browser to view the application.
 
 - **View Saved Meals**: Access your saved meals by navigating to the "Saved Meals" page.
 
-## File Structure
-
-```
-mealplanner/
-├── mealplanner/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── views.py
-│   └── models.py
-├── templates/
-│   ├── base.html
-│   ├── home.html
-│   ├── search_results.html
-│   └── saved_meals.html
-├── static/
-│   ├── mealplanner/
-│   │   └── styles.css
-├── db.sqlite3
-├── manage.py
-└── requirements.txt
-```
-
 ### `mealplanner/`: Contains the main Django app, including settings, views, and models.
 ### `templates/`: Contains HTML files for different pages of the application.
 ### `static/`: Contains static files like CSS.
 ### `requirements.txt`: Contains a list of dependencies required to run the project.
-
-## Contributing
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-name`).
-3. Make your changes.
-4. Commit your changes (`git commit -am 'Add feature'`).
-5. Push to the branch (`git push origin feature-name`).
-6. Create a new pull request.
 
 ## License
 
